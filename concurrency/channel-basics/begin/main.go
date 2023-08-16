@@ -21,11 +21,15 @@ func main() {
 
 // invoke the sum function as a goroutine
 	go sum(nums, ch)
-
 	result := <-ch
-
 	fmt.Println("Result:", result)
 
-	// force main thread to sleep
-	// time.Sleep(100 * time.Millisecond)
+	ch2 := make(chan string, 2)
+
+	ch2 <- "James"
+	ch2 <- "Toni"
+
+	fmt.Println(<-ch2)
+	fmt.Println(<-ch2)
+
 }
